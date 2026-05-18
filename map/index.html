@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Wagoo 宠物洗护 - 地图定位</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #FFF5F5;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #FF6B9D 0%, #FF8E53 100%);
+            color: white;
+            padding: 20px;
+            padding-top: 40px;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .header .back-btn {
+            position: absolute;
+            left: 20px;
+            top: 40px;
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        #map-container {
+            width: 100%;
+            height: calc(100vh - 100px);
+        }
+
+        .confirm-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #FF6B9D 0%, #FF8E53 100%);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .toast.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="back-btn" onclick="goBack()">←</div>
+        <h1>选择服务地点</h1>
+    </div>
+    
+    <div id="map-container"></div>
+    
+    <button class="confirm-btn" onclick="confirmLocation()">确认地点</button>
+    
+    <div class="toast" id="toast"></div>
+
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=d36c785810f95075e8ffecad3bf8568f"></script>
+    <script>
+        var map, marker;
+        var selectedLocation = null;
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2000);
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+        var mapLoadAttempts = 0;
+        
+        function checkMapReady(callback) {
+            if (typeof AMap !== 'undefined') {
+                callback();
+            } else if (mapLoadAttempts < 20) {
+                mapLoadAttempts++;
+                setTimeout(() => checkMapReady(callback), 500);
+            } else {
+                console.error('高德地图API加载超时');
+                showMapError();
+            }
+        }
+
+        function initMap() {
+            mapLoadAttempts = 0;
+            checkMapReady(function() {
+                try {
+                    map = new AMap.Map('map-container', {
+                        zoom: 15,
+                        center: [116.403322, 39.923218],
+                        mapStyle: 'amap://styles/normal'
+                    });
+
+                    AMap.plugin('AMap.Geolocation', function() {
+                        var geolocation = new AMap.Geolocation({
+                            enableHighAccuracy: true,
+                            timeout: 10000,
+                            buttonPosition: 'RB',
+                            buttonOffset: new AMap.Pixel(10, 20)
+                        });
+
+                        geolocation.getCurrentPosition(function(status, result) {
+                            if (status === 'complete') {
+                                map.setCenter(result.position);
+                                addMarker(result.position);
+                                selectedLocation = {
+                                    lat: result.position.lat,
+                                    lng: result.position.lng
+                                };
+                            } else {
+                                showToast('定位失败，使用默认位置');
+                                addMarker([116.403322, 39.923218]);
+                            }
+                        });
+                    });
+
+                    map.on('click', function(e) {
+                        addMarker(e.lnglat);
+                        selectedLocation = {
+                            lat: e.lnglat.lat,
+                            lng: e.lnglat.lng
+                        };
+                    });
+                } catch (error) {
+                    console.error('地图初始化失败:', error);
+                    showMapError();
+                }
+            });
+        }
+        
+        function showMapError() {
+            const container = document.getElementById('map-container');
+            container.innerHTML = `
+                <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;padding:20px;">
+                    <div style="font-size:60px;margin-bottom:20px;">🗺️</div>
+                    <div style="font-size:16px;color:#666;margin-bottom:10px;">地图加载失败</div>
+                    <div style="font-size:14px;color:#999;margin-bottom:20px;">请检查网络连接后重试</div>
+                    <button style="background:#FF6B9D;color:white;border:none;padding:12px 30px;border-radius:8px;font-size:14px;" onclick="initMap()">重新加载</button>
+                </div>
+            `;
+        }
+
+        function addMarker(position) {
+            if (marker) {
+                marker.setMap(null);
+            }
+
+            marker = new AMap.Marker({
+                position: position,
+                title: '服务地点',
+                icon: new AMap.Icon({
+                    size: new AMap.Size(40, 40),
+                    image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23FF6B9D" stroke-width="2"%3E%3Cpath d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/%3E%3Ccircle cx="12" cy="10" r="3"/%3E%3C/svg%3E',
+                    imageSize: new AMap.Size(40, 40)
+                }),
+                map: map
+            });
+        }
+
+        function confirmLocation() {
+            if (selectedLocation) {
+                showToast('地点已确认');
+                setTimeout(() => {
+                    goBack();
+                }, 1000);
+            } else {
+                showToast('请先选择地点');
+            }
+        }
+
+        window.onload = initMap;
+    </script>
+</body>
+</html>

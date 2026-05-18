@@ -1,0 +1,274 @@
+@import './global.scss';
+
+:root {
+  --brand-primary: #00D4AA;
+  --brand-primary-light: #E0FFF0;
+  --brand-primary-dark: #00B894;
+  
+  --brand-secondary: #FF6B9D;
+  --brand-secondary-light: #FFF0F5;
+  --brand-accent: #FFD700;
+  
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
+  --text-placeholder: #CCCCCC;
+  
+  --bg-page: #F0FFF8;
+  --bg-card: #FFFFFF;
+  --bg-hover: #FAFAFA;
+  --bg-disabled: #F5F5F5;
+  
+  --border-light: #EEEEEE;
+  --border-normal: #DDDDDD;
+  --border-dark: #CCCCCC;
+  
+  --success: #00B894;
+  --warning: #FFA726;
+  --error: #E57373;
+  --info: #42A5F5;
+  
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  
+  --font-size-xs: 20rpx;
+  --font-size-sm: 24rpx;
+  --font-size-base: 28rpx;
+  --font-size-md: 32rpx;
+  --font-size-lg: 36rpx;
+  --font-size-xl: 40rpx;
+  --font-size-xxl: 48rpx;
+  
+  --spacing-xs: 8rpx;
+  --spacing-sm: 16rpx;
+  --spacing-md: 24rpx;
+  --spacing-lg: 32rpx;
+  --spacing-xl: 48rpx;
+  --spacing-xxl: 64rpx;
+  
+  --radius-sm: 8rpx;
+  --radius-md: 16rpx;
+  --radius-lg: 20rpx;
+  --radius-xl: 26rpx;
+  --radius-full: 9999rpx;
+  
+  --shadow-sm: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 6rpx 24rpx rgba(0, 0, 0, 0.12);
+  
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.35s ease;
+}
+
+$brand-primary: #00D4AA;
+$brand-primary-light: #E0FFF0;
+$brand-primary-dark: #00B894;
+
+$brand-secondary: #FF6B9D;
+$brand-secondary-light: #FFF0F5;
+$brand-accent: #FFD700;
+
+$text-primary: #333333;
+$text-secondary: #666666;
+$text-tertiary: #999999;
+$text-placeholder: #CCCCCC;
+
+$bg-page: #F0FFF8;
+$bg-card: #FFFFFF;
+$bg-hover: #FAFAFA;
+$bg-disabled: #F5F5F5;
+
+$border-light: #EEEEEE;
+$border-normal: #DDDDDD;
+$border-dark: #CCCCCC;
+
+$success: #00B894;
+$warning: #FFA726;
+$error: #E57373;
+$info: #42A5F5;
+
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+$font-size-xs: 20rpx;
+$font-size-sm: 24rpx;
+$font-size-base: 28rpx;
+$font-size-md: 32rpx;
+$font-size-lg: 36rpx;
+$font-size-xl: 40rpx;
+$font-size-xxl: 48rpx;
+
+$spacing-xs: 8rpx;
+$spacing-sm: 16rpx;
+$spacing-md: 24rpx;
+$spacing-lg: 32rpx;
+$spacing-xl: 48rpx;
+$spacing-xxl: 64rpx;
+
+$radius-sm: 8rpx;
+$radius-md: 16rpx;
+$radius-lg: 20rpx;
+$radius-xl: 26rpx;
+$radius-full: 9999rpx;
+
+$shadow-sm: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 6rpx 24rpx rgba(0, 0, 0, 0.12);
+
+$transition-fast: 0.15s ease;
+$transition-normal: 0.25s ease;
+$transition-slow: 0.35s ease;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-clamp($lines: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
+@mixin linear-gradient-bg($start: $brand-primary, $end: $brand-primary-dark) {
+  background: linear-gradient(135deg, $start 0%, $end 100%);
+}
+
+@mixin card-style {
+  background: $bg-card;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-md;
+}
+
+@mixin button-base {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-lg;
+  font-weight: 600;
+  transition: all $transition-normal;
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+  @include linear-gradient-bg;
+  color: #fff;
+  border: none;
+}
+
+@mixin button-secondary {
+  @include button-base;
+  background: $bg-disabled;
+  color: $text-secondary;
+  border: none;
+}
+
+@mixin button-outline {
+  @include button-base;
+  background: $bg-card;
+  color: $brand-primary;
+  border: 3rpx solid $brand-primary;
+}
+
+@mixin input-base {
+  width: 100%;
+  padding: $spacing-md;
+  border: 2rpx solid $border-light;
+  border-radius: $radius-md;
+  font-size: $font-size-base;
+  box-sizing: border-box;
+  transition: all $transition-fast;
+  
+  &:focus {
+    border-color: $brand-primary;
+    outline: none;
+  }
+  
+  &::placeholder {
+    color: $text-placeholder;
+  }
+}
+
+@mixin badge-base {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-full;
+  font-size: $font-size-xs;
+  font-weight: 500;
+}
+
+@mixin status-pending {
+  @include badge-base;
+  background: #FFF8E1;
+  color: $warning;
+}
+
+@mixin status-accepted {
+  @include badge-base;
+  background: $brand-primary-light;
+  color: $brand-primary-dark;
+}
+
+@mixin status-serving {
+  @include badge-base;
+  background: $brand-primary-light;
+  color: $brand-primary;
+}
+
+@mixin status-completed {
+  @include badge-base;
+  background: $brand-primary-light;
+  color: $brand-primary-dark;
+}
+
+@mixin status-canceled {
+  @include badge-base;
+  background: #FFEBEE;
+  color: $error;
+}
+
+@mixin page-container {
+  min-height: 100vh;
+  background: $bg-page;
+  padding-bottom: $spacing-xl;
+}
+
+@mixin safe-area-bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@mixin custom-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  @include linear-gradient-bg;
+  padding-top: var(--status-bar-height);
+}

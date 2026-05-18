@@ -1,0 +1,33 @@
+{
+  "name": "丰速行宠物洗护",
+  "appid": "__UNI__PET_HOME",
+  "description": "专业宠物上门洗护服务",
+  "versionName": "1.0.0",
+  "versionCode": "100",
+  "transformPx": false,
+  "h5": {
+    "title": "丰速行宠物洗护",
+    "router": {
+      "mode": "hash",
+      "base": "./"
+    },
+    "optimization": {
+      "treeShaking": {
+        "enable": true
+      }
+    },
+    "devServer": {
+      "https": false
+    }
+  },
+  "mp-weixin": {
+    "appid": "",
+    "setting": {
+      "urlCheck": false
+    },
+    "usingComponents": true
+  },
+  "amap": {
+    "key": "8fd00595af691b1ca98bdb26f476f99f"
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "pages": [
+    {
+      "path": "pages/home/index",
+      "style": {
+        "navigationBarTitleText": "丰速行宠物洗护",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/service-detail/index",
+      "style": {
+        "navigationBarTitleText": "服务详情",
+        "navigationBarBackgroundColor": "#1a3a52",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/order/index",
+      "style": {
+        "navigationBarTitleText": "预约服务",
+        "navigationBarBackgroundColor": "#1a3a52",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/mine/index",
+      "style": {
+        "navigationBarTitleText": "我的",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/pets/index",
+      "style": {
+        "navigationBarTitleText": "宠物信息",
+        "navigationBarBackgroundColor": "#1a3a52",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/order-list/index",
+      "style": {
+        "navigationBarTitleText": "订单信息",
+        "navigationBarBackgroundColor": "#1a3a52",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/order-detail/index",
+      "style": {
+        "navigationBarTitleText": "订单详情",
+        "navigationBarBackgroundColor": "#1a3a52",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/address/index",
+      "style": {
+        "navigationBarTitleText": "地址管理",
+        "navigationBarBackgroundColor": "#1a3a52",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/invoice/index",
+      "style": {
+        "navigationBarTitleText": "开票",
+        "navigationBarBackgroundColor": "#1a3a52",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/invoice-form/index",
+      "style": {
+        "navigationBarTitleText": "开具发票",
+        "navigationBarBackgroundColor": "#1a3a52",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/map-selector/index",
+      "style": {
+        "navigationBarTitleText": "选择地址",
+        "navigationBarBackgroundColor": "#1a3a52",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/pinliu/index",
+      "style": {
+        "navigationBarTitleText": "拼遛社区",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/support/index",
+      "style": {
+        "navigationBarTitleText": "客服中心",
+        "navigationBarBackgroundColor": "#1a3a52",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/about/index",
+      "style": {
+        "navigationBarTitleText": "关于我们",
+        "navigationBarBackgroundColor": "#1a3a52",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/chat/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/pet-edit/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/pickup-info/index",
+      "style": {
+        "navigationBarTitleText": "填写接宠信息",
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/time-select/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    },
+    {
+      "path": "pages/provider-list/index",
+      "style": {
+        "navigationBarTitleText": "选择服务者",
+        "navigationBarBackgroundColor": "#1a3a52",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/order-confirm/index",
+      "style": {
+        "navigationBarTitleText": "确认订单",
+        "navigationBarBackgroundColor": "#1a3a52",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/payment/index",
+      "style": {
+        "navigationBarTitleText": "确认支付",
+        "navigationBarBackgroundColor": "#1a3a52",
+        "navigationBarTextStyle": "white"
+      }
+    },
+    {
+      "path": "pages/payment-success/index",
+      "style": {
+        "navigationStyle": "custom"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "丰速行宠物洗护",
+    "navigationBarBackgroundColor": "#1a3a52",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#90a4ae",
+    "selectedColor": "#f5c518",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/pinliu/index",
+        "text": "遛宠"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的"
+      }
+    ]
+  }
+}
