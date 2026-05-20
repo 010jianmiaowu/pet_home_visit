@@ -692,6 +692,75 @@
       cursor: not-allowed;
     }
 
+    .pet-item {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      background: #F5F7FA;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pet-item:active {
+      transform: scale(0.98);
+    }
+
+    .pet-item.selected {
+      background: #1A3A52;
+      color: #FFFFFF;
+    }
+
+    .pet-avatar {
+      width: 56px;
+      height: 56px;
+      background: #F5C518;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-right: 16px;
+    }
+
+    .pet-info {
+      flex: 1;
+    }
+
+    .pet-name {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .pet-detail {
+      font-size: 13px;
+      color: #90A4AE;
+    }
+
+    .pet-item.selected .pet-detail {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .add-pet-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      border: 2px dashed #1A3A52;
+      border-radius: 12px;
+      color: #1A3A52;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 16px;
+    }
+
+    .add-icon {
+      font-size: 24px;
+      margin-right: 8px;
+    }
+
     .time-modal-footer {
       padding: 20px;
       padding-bottom: calc(20px + env(safe-area-inset-bottom));
@@ -729,6 +798,14 @@
 
     <div class="main-content">
       <div class="booking-card">
+        <div class="booking-item" onclick="showPetSelector()">
+          <div class="booking-icon">🐾</div>
+          <div class="booking-info">
+            <div class="booking-label">选择宠物</div>
+            <div class="booking-value placeholder" id="pet-display">请选择宠物</div>
+          </div>
+          <div class="booking-arrow">›</div>
+        </div>
         <div class="booking-item" onclick="showPage('address-page')">
           <div class="booking-icon">📍</div>
           <div class="booking-info">
@@ -755,35 +832,67 @@
 
       <div class="service-list">
         <div class="service-card" onclick="selectService(0)">
-          <img class="service-image" src="https://trae-api-cn.mchost.guru/api/ide/v1/text-to-image?prompt=cute%20cat%20eating%20food%20at%20home%20happy&image_size=portrait_4_3" alt="上门喂猫" />
+          <img class="service-image" src="https://trae-api-cn.mchost.guru/api/ide/v1/text-to-image?prompt=professional%20pet%20grooming%20washing%20dog%20at%20home&image_size=portrait_4_3" alt="精致洗护" />
           <div class="service-info">
-            <div class="service-name">【平台严选】上门喂猫</div>
-            <div class="service-desc">放心托付 | 平台保障</div>
-            <div class="service-price">¥49<span>起</span></div>
+            <div class="service-name">精致洗护</div>
+            <div class="service-desc">专业洗护师上门服务</div>
+            <div class="service-price">¥129<span>起</span><span class="service-tag">热门</span></div>
           </div>
         </div>
         <div class="service-card" onclick="selectService(1)">
-          <img class="service-image" src="https://trae-api-cn.mchost.guru/api/ide/v1/text-to-image?prompt=golden%20retriever%20dog%20walking%20outdoor%20happy&image_size=portrait_4_3" alt="上门喂狗" />
+          <img class="service-image" src="https://trae-api-cn.mchost.guru/api/ide/v1/text-to-image?prompt=pet%20bath%20washing%20clean%20simple&image_size=portrait_4_3" alt="普通洗护" />
           <div class="service-info">
-            <div class="service-name">【平台严选】上门喂狗</div>
-            <div class="service-desc">放心托付 | 赠送遛狗</div>
-            <div class="service-price">¥59<span>起</span></div>
-          </div>
-        </div>
-        <div class="service-card" onclick="selectService(2)">
-          <img class="service-image" src="https://trae-api-cn.mchost.guru/api/ide/v1/text-to-image?prompt=professional%20pet%20grooming%20washing%20dog&image_size=portrait_4_3" alt="宠物洗护" />
-          <div class="service-info">
-            <div class="service-name">【平台严选】宠物洗护</div>
-            <div class="service-desc">专业洗护 | 安全放心</div>
+            <div class="service-name">普通洗护</div>
+            <div class="service-desc">基础洗护清洁服务</div>
             <div class="service-price">¥89<span>起</span></div>
           </div>
         </div>
-        <div class="service-card" onclick="selectService(3)">
-          <img class="service-image" src="https://trae-api-cn.mchost.guru/api/ide/v1/text-to-image?prompt=professional%20pet%20grooming%20styling%20salon&image_size=portrait_4_3" alt="宠物美容" />
+        <div class="service-card" onclick="selectService(2)">
+          <img class="service-image" src="https://trae-api-cn.mchost.guru/api/ide/v1/text-to-image?prompt=dog%20walking%20outdoor%20park%20happy&image_size=portrait_4_3" alt="遛宠" />
           <div class="service-info">
-            <div class="service-name">【平台严选】宠物美容</div>
-            <div class="service-desc">造型设计 | 个性定制</div>
-            <div class="service-price">¥159<span>起</span></div>
+            <div class="service-name">遛宠</div>
+            <div class="service-desc">专业遛宠师陪伴</div>
+            <div class="service-price">¥49<span>起</span></div>
+          </div>
+        </div>
+        <div class="service-card" onclick="selectService(3)">
+          <img class="service-image" src="https://trae-api-cn.mchost.guru/api/ide/v1/text-to-image?prompt=pet%20dog%20training%20professional&image_size=portrait_4_3" alt="训犬" />
+          <div class="service-info">
+            <div class="service-name">训犬</div>
+            <div class="service-desc">专业训犬师指导</div>
+            <div class="service-price">¥299<span>起</span></div>
+          </div>
+        </div>
+        <div class="service-card" onclick="selectService(4)">
+          <img class="service-image" src="https://trae-api-cn.mchost.guru/api/ide/v1/text-to-image?prompt=cute%20cat%20eating%20food%20at%20home&image_size=portrait_4_3" alt="上门喂养" />
+          <div class="service-info">
+            <div class="service-name">上门喂养</div>
+            <div class="service-desc">出行无忧，宠物托付</div>
+            <div class="service-price">¥59<span>起</span></div>
+          </div>
+        </div>
+        <div class="service-card" onclick="selectService(5)">
+          <img class="service-image" src="https://trae-api-cn.mchost.guru/api/ide/v1/text-to-image?prompt=pet%20foster%20home%20cozy%20comfortable&image_size=portrait_4_3" alt="寄养" />
+          <div class="service-info">
+            <div class="service-name">寄养</div>
+            <div class="service-desc">家庭式寄养环境</div>
+            <div class="service-price">¥169<span>起</span></div>
+          </div>
+        </div>
+        <div class="service-card" onclick="selectService(6)">
+          <img class="service-image" src="https://trae-api-cn.mchost.guru/api/ide/v1/text-to-image?prompt=professional%20pet%20grooming%20styling&image_size=portrait_4_3" alt="宠物美容" />
+          <div class="service-info">
+            <div class="service-name">宠物美容</div>
+            <div class="service-desc">造型设计，个性定制</div>
+            <div class="service-price">¥199<span>起</span></div>
+          </div>
+        </div>
+        <div class="service-card" onclick="selectService(7)">
+          <img class="service-image" src="https://trae-api-cn.mchost.guru/api/ide/v1/text-to-image?prompt=veterinarian%20pet%20check%20medical&image_size=portrait_4_3" alt="就医陪诊" />
+          <div class="service-info">
+            <div class="service-name">就医陪诊</div>
+            <div class="service-desc">专人陪护宠物就医</div>
+            <div class="service-price">¥99<span>起</span></div>
           </div>
         </div>
       </div>
@@ -884,6 +993,27 @@
     </div>
   </div>
 
+  <!-- 宠物选择模态框 -->
+  <div id="pet-modal" class="time-modal">
+    <div class="time-modal-overlay" onclick="closePetModal()"></div>
+    <div class="time-modal-content">
+      <div class="time-modal-header">
+        <div class="time-modal-title">选择宠物</div>
+        <div class="time-modal-close" onclick="closePetModal()">✕</div>
+      </div>
+
+      <div class="calendar-section">
+        <div class="pet-list" id="pet-list">
+          <!-- 宠物列表由JS生成 -->
+        </div>
+        <div class="add-pet-btn" onclick="showAddPet()">
+          <span class="add-icon">+</span>
+          <span>添加宠物</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- 时间选择模态框 -->
   <div id="time-modal" class="time-modal">
     <div class="time-modal-overlay" onclick="closeTimeModal()"></div>
@@ -932,9 +1062,16 @@
       time: null,
       selectedDate: null,
       selectedTimeSlot: null,
+      selectedPet: null,
       saveAddress: false,
       showExtension: false
     };
+
+    // 宠物数据
+    const petsData = [
+      { id: 1, name: '旺财', type: 'dog', weight: '中型犬', gender: '公', neutered: true, avatar: '🐕', age: '3岁' },
+      { id: 2, name: '咪咪', type: 'cat', weight: '小型猫', gender: '母', neutered: true, avatar: '🐱', age: '2岁' }
+    ];
 
     // 历史地址数据
     const historyAddresses = [
@@ -972,11 +1109,66 @@
     // 更新预约按钮状态
     function updateBookButton() {
       const btn = document.getElementById('book-button');
-      if (state.address && state.time) {
+      if (state.selectedPet && state.address && state.time) {
         btn.classList.remove('disabled');
       } else {
         btn.classList.add('disabled');
       }
+    }
+
+    // 显示宠物选择器
+    function showPetSelector() {
+      initPetList();
+      document.getElementById('pet-modal').classList.add('active');
+    }
+
+    // 关闭宠物选择器
+    function closePetModal() {
+      document.getElementById('pet-modal').classList.remove('active');
+    }
+
+    // 初始化宠物列表
+    function initPetList() {
+      const petList = document.getElementById('pet-list');
+      petList.innerHTML = '';
+
+      petsData.forEach(pet => {
+        const petItem = document.createElement('div');
+        petItem.className = 'pet-item';
+        if (state.selectedPet && state.selectedPet.id === pet.id) {
+          petItem.classList.add('selected');
+        }
+
+        const petTypeLabel = pet.type === 'dog' ? '狗狗' : '猫咪';
+        petItem.innerHTML = `
+          <div class="pet-avatar">${pet.avatar}</div>
+          <div class="pet-info">
+            <div class="pet-name">${pet.name}</div>
+            <div class="pet-detail">${petTypeLabel} · ${pet.weight} · ${pet.age}</div>
+          </div>
+        `;
+
+        petItem.onclick = () => selectPet(pet);
+        petList.appendChild(petItem);
+      });
+    }
+
+    // 选择宠物
+    function selectPet(pet) {
+      state.selectedPet = pet;
+      initPetList();
+
+      const petTypeLabel = pet.type === 'dog' ? '狗狗' : '猫咪';
+      document.getElementById('pet-display').textContent = `${pet.name} · ${petTypeLabel}`;
+      document.getElementById('pet-display').classList.remove('placeholder');
+
+      closePetModal();
+      updateBookButton();
+    }
+
+    // 显示添加宠物
+    function showAddPet() {
+      showToast('添加宠物功能开发中');
     }
 
     // 更新地址确认按钮状态
@@ -1208,6 +1400,10 @@
 
     // 立即预约
     function handleBooking() {
+      if (!state.selectedPet) {
+        showToast('请选择宠物');
+        return;
+      }
       if (!state.address) {
         showToast('请输入上门位置');
         return;
