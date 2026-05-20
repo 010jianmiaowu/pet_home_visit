@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>宠物服务 - Axure原型</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #F5F7FA; min-height: 100vh; color: #1A3A52; }
+    
+    .page { display: none; min-height: 100vh; width: 375px; margin: 0 auto; background: #F5F7FA; position: relative; }
+    .page.active { display: block; }
+    
+    .header {
+      background: #FFFFFF;
+      padding: 60px 20px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #E8E8E8;
+    }
+    .header-title { font-size: 20px; font-weight: 600; color: #1A3A52; }
+    .header-back { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: #1A3A52; cursor: pointer; }
+    .header-right { width: 40px; }
+    
+    .main-content { padding: 20px; padding-bottom: 100px; }
+    
+    .booking-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(26, 58, 82, 0.06);
+    }
+    .booking-item {
+      display: flex;
+      align-items: center;
+      padding: 16px 0;
+      cursor: pointer;
+    }
+    .booking-item + .booking-item { border-top: 1px solid #F0F0F0; }
+    .booking-icon {
+      width: 40px;
+      height: 40px;
+      background: #F5F7FA;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-right: 16px;
+    }
+    .booking-info { flex: 1; }
+    .booking-label { font-size: 14px; color: #90A4AE; margin-bottom: 4px; }
+    .booking-value { font-size: 16px; color: #1A3A52; font-weight: 500; }
+    .booking-value.placeholder { color: #B0BEC5; }
+    .booking-arrow { font-size: 20px; color: #B0BEC5; }
+    
+    .book-btn {
+      background: linear-gradient(135deg, #1A3A52 0%, #2D5A7B 100%);
+      color: #FFFFFF;
+      border: none;
+      width: 100%;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 24px;
+    }
+    .book-btn.disabled { background: #E0E0E0; }
+    
+    .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .section-title { font-size: 18px; font-weight: 600; color: #1A3A52; }
+    
+    .service-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .service-card {
+      background: #FFFFFF;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(26, 58, 82, 0.06);
+      cursor: pointer;
+    }
+    .service-image { width: 100%; height: 140px; object-fit: cover; background: #F5F7FA; }
+    .service-info { padding: 12px; }
+    .service-name { font-size: 15px; font-weight: 600; color: #1A3A52; margin-bottom: 4px; }
+    .service-desc { font-size: 12px; color: #90A4AE; margin-bottom: 8px; }
+    .service-price { font-size: 18px; font-weight: 700; color: #1A3A52; }
+    .service-price span { font-size: 12px; font-weight: 400; color: #90A4AE; }
+    .service-tag {
+      display: inline-block;
+      background: #E8F5E9;
+      color: #4CAF50;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-left: 8px;
+    }
+    
+    .address-content { padding: 20px; padding-bottom: 120px; }
+    .paste-section {
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .paste-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      color: #1A3A52;
+      background: transparent;
+    }
+    .paste-input::placeholder { color: #B0BEC5; }
+    .paste-btn { padding: 8px 16px; background: #F5F7FA; border-radius: 20px; font-size: 14px; color: #1A3A52; cursor: pointer; }
+    
+    .map-section {
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+    }
+    .map-icon { font-size: 32px; margin-right: 12px; }
+    .map-address { flex: 1; font-size: 16px; color: #FF6B6B; font-weight: 500; }
+    .map-select-btn { background: #F5F7FA; padding: 8px 16px; border-radius: 20px; font-size: 14px; color: #1A3A52; cursor: pointer; }
+    
+    .address-form {
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .address-form-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #F0F0F0;
+    }
+    .address-form-title { font-size: 18px; font-weight: 600; color: #1A3A52; }
+    .address-edit-btn { font-size: 14px; color: #5A6B7D; cursor: pointer; }
+    
+    .form-item { margin-bottom: 20px; }
+    .form-label { font-size: 15px; color: #1A3A52; margin-bottom: 10px; display: flex; align-items: center; }
+    .form-label .required { color: #FF6B6B; margin-left: 4px; }
+    .form-input-wrapper { display: flex; align-items: center; }
+    .form-input {
+      flex: 1;
+      height: 48px;
+      background: #F5F7FA;
+      border: none;
+      border-radius: 10px;
+      padding: 0 16px;
+      font-size: 15px;
+      color: #1A3A52;
+      outline: none;
+    }
+    .form-input::placeholder { color: #B0BEC5; }
+    .form-side-btn {
+      margin-left: 12px;
+      padding: 0 16px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      background: #F5F7FA;
+      border-radius: 10px;
+      font-size: 14px;
+      color: #5A6B7D;
+      cursor: pointer;
+    }
+    
+    .save-address { display: flex; align-items: center; margin-bottom: 16px; }
+    .save-address-checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #D0D0D0;
+      border-radius: 6px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .save-address-checkbox.checked { background: #1A3A52; border-color: #1A3A52; }
+    .save-address-checkbox .check-icon { color: #FFFFFF; font-size: 16px; display: none; }
+    .save-address-checkbox.checked .check-icon { display: block; }
+    .save-address-text { font-size: 15px; color: #1A3A52; }
+    
+    .clear-btn {
+      text-align: center;
+      padding: 16px;
+      font-size: 15px;
+      color: #FF6B6B;
+      cursor: pointer;
+      border-top: 1px solid #F0F0F0;
+      margin-top: 16px;
+    }
+    
+    .history-section {
+      background: #FFFFFF;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .history-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .history-title { font-size: 16px; font-weight: 600; color: #1A3A52; }
+    .address-book-btn { font-size: 14px; color: #5A6B7D; cursor: pointer; }
+    .history-item {
+      padding: 16px 0;
+      border-bottom: 1px solid #F0F0F0;
+      cursor: pointer;
+    }
+    .history-item:last-child { border-bottom: none; }
+    .history-address-text { font-size: 15px; color: #1A3A52; margin-bottom: 4px; }
+    .history-contact-text { font-size: 13px; color: #90A4AE; }
+    
+    .address-footer {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 375px;
+      background: #FFFFFF;
+      padding: 20px;
+      border-top: 1px solid #F0F0F0;
+    }
+    .confirm-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #1A3A52 0%, #2D5A7B 100%);
+      color: #FFFFFF;
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .confirm-btn.disabled { background: #E0E0E0; }
+    
+    .time-modal {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 375px;
+      height: 100%;
+      z-index: 200;
+      display: none;
+    }
+    .time-modal.active { display: block; }
+    .time-modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .time-modal-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #FFFFFF;
+      border-radius: 24px 24px 0 0;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+    .time-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 20px;
+      border-bottom: 1px solid #F0F0F0;
+    }
+    .time-modal-title { font-size: 18px; font-weight: 600; color: #1A3A52; }
+    .time-modal-close {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #90A4AE;
+      cursor: pointer;
+    }
+    
+    .calendar-section { padding: 20px; }
+    .calendar-month { font-size: 16px; font-weight: 600; color: #1A3A52; margin-bottom: 16px; }
+    .calendar-week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 12px; }
+    .calendar-week-day { text-align: center; font-size: 13px; color: #90A4AE; }
+    .calendar-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+    .calendar-day {
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 15px;
+      color: #1A3A52;
+    }
+    .calendar-day.today { background: #FFF3E0; color: #FF9800; }
+    .calendar-day.selected { background: #FF6B6B; color: #FFFFFF; }
+    .calendar-day.disabled { color: #E0E0E0; }
+    .calendar-day-status { font-size: 11px; margin-top: 2px; }
+    
+    .time-slots-section { padding: 0 20px 20px; }
+    .time-slots-title { font-size: 16px; font-weight: 600; color: #1A3A52; margin-bottom: 16px; }
+    .time-slots-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .time-slot {
+      padding: 14px;
+      background: #F5F7FA;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 14px;
+      color: #1A3A52;
+      cursor: pointer;
+    }
+    .time-slot.selected { background: #FF6B6B; color: #FFFFFF; }
+    
+    .time-modal-footer { padding: 20px; border-top: 1px solid #F0F0F0; }
+    
+    .pet-item {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      background: #F5F7FA;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+    .pet-item.selected { background: #1A3A52; color: #FFFFFF; }
+    .pet-avatar {
+      width: 56px;
+      height: 56px;
+      background: #F5C518;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-right: 16px;
+    }
+    .pet-info { flex: 1; }
+    .pet-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+    .pet-detail { font-size: 13px; color: #90A4AE; }
+    .pet-item.selected .pet-detail { color: rgba(255, 255, 255, 0.7); }
+    
+    .add-pet-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      border: 2px dashed #1A3A52;
+      border-radius: 12px;
+      color: #1A3A52;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 16px;
+    }
+    .add-icon { font-size: 24px; margin-right: 8px; }
+    
+    .toast {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      z-index: 1000;
+      display: none;
+    }
+    .toast.show { display: block; }
+
+    .nav-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 375px;
+      background: #FFFFFF;
+      display: flex;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    .nav-item { flex: 1; text-align: center; padding: 12px 0; color: #90A4AE; font-size: 12px; }
+    .nav-item.active { color: #1A3A52; }
+    .nav-item .icon { font-size: 24px; margin-bottom: 4px; display: block; }
+  </style>
+</head>
+<body>
+  <!-- 主页面 -->
+  <div id="main-page" class="page active">
+    <div class="header">
+      <div class="header-right"></div>
+      <div class="header-title">宠物服务</div>
+      <div class="header-right"></div>
+    </div>
+
+    <div class="main-content">
+      <div class="booking-card">
+        <div class="booking-item" onclick="showPetSelector()">
+          <div class="booking-icon">🐾</div>
+          <div class="booking-info">
+            <div class="booking-label">选择宠物</div>
+            <div class="booking-value placeholder" id="pet-display">请选择宠物</div>
+          </div>
+          <div class="booking-arrow">›</div>
+        </div>
+        <div class="booking-item" onclick="showPage('address-page')">
+          <div class="booking-icon">📍</div>
+          <div class="booking-info">
+            <div class="booking-label">上门位置</div>
+            <div class="booking-value placeholder" id="address-display">请输入上门位置</div>
+          </div>
+          <div class="booking-arrow">›</div>
+        </div>
+        <div class="booking-item" onclick="showTimeModal()">
+          <div class="booking-icon">⏰</div>
+          <div class="booking-info">
+            <div class="booking-label">上门时间</div>
+            <div class="booking-value placeholder" id="time-display">请选择上门时间</div>
+          </div>
+          <div class="booking-arrow">›</div>
+        </div>
+      </div>
+
+      <button class="book-btn disabled" id="book-button" onclick="handleBooking()">立即预约</button>
+
+      <div class="section-header">
+        <div class="section-title">推荐服务</div>
+      </div>
+
+      <div class="service-list">
+        <div class="service-card" onclick="selectService(0)">
+          <img class="service-image" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=professional%20pet%20grooming%20washing%20dog%20at%20home&image_size=portrait_4_3" alt="精致洗护" />
+          <div class="service-info">
+            <div class="service-name">精致洗护</div>
+            <div class="service-desc">专业洗护师上门服务</div>
+            <div class="service-price">¥129<span>起</span><span class="service-tag">热门</span></div>
+          </div>
+        </div>
+        <div class="service-card" onclick="selectService(1)">
+          <img class="service-image" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=pet%20bath%20washing%20clean%20simple&image_size=portrait_4_3" alt="普通洗护" />
+          <div class="service-info">
+            <div class="service-name">普通洗护</div>
+            <div class="service-desc">基础洗护清洁服务</div>
+            <div class="service-price">¥89<span>起</span></div>
+          </div>
+        </div>
+        <div class="service-card" onclick="selectService(2)">
+          <img class="service-image" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=dog%20walking%20outdoor%20park%20happy&image_size=portrait_4_3" alt="遛宠" />
+          <div class="service-info">
+            <div class="service-name">遛宠</div>
+            <div class="service-desc">专业遛宠师陪伴</div>
+            <div class="service-price">¥49<span>起</span></div>
+          </div>
+        </div>
+        <div class="service-card" onclick="selectService(3)">
+          <img class="service-image" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=pet%20dog%20training%20professional&image_size=portrait_4_3" alt="训犬" />
+          <div class="service-info">
+            <div class="service-name">训犬</div>
+            <div class="service-desc">专业训犬师指导</div>
+            <div class="service-price">¥299<span>起</span></div>
+          </div>
+        </div>
+        <div class="service-card" onclick="selectService(4)">
+          <img class="service-image" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=cute%20cat%20eating%20food%20at%20home&image_size=portrait_4_3" alt="上门喂养" />
+          <div class="service-info">
+            <div class="service-name">上门喂养</div>
+            <div class="service-desc">出行无忧，宠物托付</div>
+            <div class="service-price">¥59<span>起</span></div>
+          </div>
+        </div>
+        <div class="service-card" onclick="selectService(5)">
+          <img class="service-image" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=pet%20foster%20home%20cozy%20comfortable&image_size=portrait_4_3" alt="寄养" />
+          <div class="service-info">
+            <div class="service-name">寄养</div>
+            <div class="service-desc">家庭式寄养环境</div>
+            <div class="service-price">¥169<span>起</span></div>
+          </div>
+        </div>
+        <div class="service-card" onclick="selectService(6)">
+          <img class="service-image" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=professional%20pet%20grooming%20styling&image_size=portrait_4_3" alt="宠物美容" />
+          <div class="service-info">
+            <div class="service-name">宠物美容</div>
+            <div class="service-desc">造型设计，个性定制</div>
+            <div class="service-price">¥199<span>起</span></div>
+          </div>
+        </div>
+        <div class="service-card" onclick="selectService(7)">
+          <img class="service-image" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=veterinarian%20pet%20check%20medical&image_size=portrait_4_3" alt="就医陪诊" />
+          <div class="service-info">
+            <div class="service-name">就医陪诊</div>
+            <div class="service-desc">专人陪护宠物就医</div>
+            <div class="service-price">¥99<span>起</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-bar">
+      <div class="nav-item active" onclick="showPage('main-page')"><div class="icon">🏠</div><div>首页</div></div>
+      <div class="nav-item" onclick="showPage('mine-page')"><div class="icon">👤</div><div>我的</div></div>
+    </div>
+  </div>
+
+  <!-- 地址选择页面 -->
+  <div id="address-page" class="page">
+    <div class="header">
+      <div class="header-back" onclick="showPage('main-page')">‹</div>
+      <div class="header-title">填写接宠信息</div>
+      <div class="header-right"></div>
+    </div>
+
+    <div class="address-content">
+      <div class="paste-section">
+        <input class="paste-input" placeholder="支持粘贴文字，自动识别地址、联系人或电话" />
+        <div class="paste-btn">粘贴识别</div>
+      </div>
+
+      <div class="map-section">
+        <div class="map-icon">📍</div>
+        <div class="map-address">华熙国际中心D座</div>
+        <div class="map-select-btn">地图选址</div>
+      </div>
+
+      <div class="address-form">
+        <div class="address-form-header">
+          <div class="address-form-title">华熙国际中心D座</div>
+          <div class="address-edit-btn">编辑</div>
+        </div>
+
+        <div class="form-item">
+          <div class="form-label">地址<span class="required">*</span></div>
+          <input class="form-input" placeholder="北京市朝阳区恒惠东路与景恒街交叉口西北方向56米左右" />
+        </div>
+
+        <div class="form-item">
+          <div class="form-label">门牌号</div>
+          <input class="form-input" placeholder="如B区180号" />
+        </div>
+
+        <div class="form-item">
+          <div class="form-label">联系人<span class="required">*</span></div>
+          <div class="form-input-wrapper">
+            <input class="form-input" placeholder="姓名/店铺名" />
+            <div class="form-side-btn">通讯录</div>
+          </div>
+        </div>
+
+        <div class="form-item">
+          <div class="form-label">电话<span class="required">*</span></div>
+          <div class="form-input-wrapper">
+            <input class="form-input" placeholder="手机/座机" />
+            <div class="form-side-btn">分机号</div>
+          </div>
+        </div>
+
+        <div class="save-address">
+          <div class="save-address-checkbox checked">
+            <span class="check-icon">✓</span>
+          </div>
+          <div class="save-address-text">存入地址簿</div>
+        </div>
+
+        <div class="clear-btn">清空</div>
+      </div>
+
+      <div class="history-section">
+        <div class="history-header">
+          <div class="history-title">历史地址</div>
+          <div class="address-book-btn">地址簿 ›</div>
+        </div>
+        <div class="history-item" onclick="selectHistoryAddress(0)">
+          <div class="history-address-text">华熙国际中心D座</div>
+          <div class="history-contact-text">吴建淼 135****2222</div>
+        </div>
+        <div class="history-item" onclick="selectHistoryAddress(1)">
+          <div class="history-address-text">东单路口南-公交站 b区801</div>
+          <div class="history-contact-text">吴 135****30061</div>
+        </div>
+        <div class="history-item" onclick="selectHistoryAddress(2)">
+          <div class="history-address-text">东单路口南-公交站</div>
+          <div class="history-contact-text">联系人待补充</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="address-footer">
+      <button class="confirm-btn" onclick="confirmAddress()">确认</button>
+    </div>
+  </div>
+
+  <!-- 宠物选择模态框 -->
+  <div id="pet-modal" class="time-modal">
+    <div class="time-modal-overlay" onclick="closePetModal()"></div>
+    <div class="time-modal-content">
+      <div class="time-modal-header">
+        <div class="time-modal-title">选择宠物</div>
+        <div class="time-modal-close" onclick="closePetModal()">✕</div>
+      </div>
+
+      <div class="calendar-section">
+        <div class="pet-item" onclick="selectPet(1)">
+          <div class="pet-avatar">🐕</div>
+          <div class="pet-info">
+            <div class="pet-name">旺财</div>
+            <div class="pet-detail">狗狗 · 中型犬 · 3岁</div>
+          </div>
+        </div>
+        <div class="pet-item" onclick="selectPet(2)">
+          <div class="pet-avatar">🐱</div>
+          <div class="pet-info">
+            <div class="pet-name">咪咪</div>
+            <div class="pet-detail">猫咪 · 小型猫 · 2岁</div>
+          </div>
+        </div>
+        <div class="add-pet-btn" onclick="showAddPet()">
+          <span class="add-icon">+</span>
+          <span>添加宠物</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 时间选择模态框 -->
+  <div id="time-modal" class="time-modal">
+    <div class="time-modal-overlay" onclick="closeTimeModal()"></div>
+    <div class="time-modal-content">
+      <div class="time-modal-header">
+        <div class="time-modal-title">请选择上门时间（支持单天）</div>
+        <div class="time-modal-close" onclick="closeTimeModal()">✕</div>
+      </div>
+
+      <div class="calendar-section">
+        <div class="calendar-month">2026年5月</div>
+        <div class="calendar-week">
+          <div class="calendar-week-day">日</div>
+          <div class="calendar-week-day">一</div>
+          <div class="calendar-week-day">二</div>
+          <div class="calendar-week-day">三</div>
+          <div class="calendar-week-day">四</div>
+          <div class="calendar-week-day">五</div>
+          <div class="calendar-week-day">六</div>
+        </div>
+        <div class="calendar-days" id="calendar-days">
+          <!-- Generated by JS -->
+        </div>
+      </div>
+
+      <div class="time-slots-section">
+        <div class="time-slots-title">选择上门时段</div>
+        <div class="time-slots-grid" id="time-slots">
+          <!-- Generated by JS -->
+        </div>
+      </div>
+
+      <div class="time-modal-footer">
+        <button class="confirm-btn disabled" id="time-confirm-btn" onclick="confirmTime()">确认</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 我的页面 -->
+  <div id="mine-page" class="page">
+    <div class="header">
+      <div class="header-right"></div>
+      <div class="header-title">我的</div>
+      <div class="header-right"></div>
+    </div>
+
+    <div class="main-content">
+      <div style="background: linear-gradient(135deg, #1A3A52 0%, #2D5A7B 100%); padding: 30px; margin-bottom: 20px; border-radius: 0 0 24px 24px;">
+        <div style="display: flex; align-items: center;">
+          <div style="width: 70px; height: 70px; background: rgba(255,255,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin-right: 16px;">👤</div>
+          <div>
+            <div style="font-size: 18px; font-weight: 600; color: #FFFFFF; margin-bottom: 4px;">用户昵称</div>
+            <div style="font-size: 14px; color: rgba(255,255,255,0.8);">138****8888</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: #FFFFFF; border-radius: 16px; padding: 16px; margin-bottom: 16px;">
+        <div style="display: flex; padding: 16px; border-bottom: 1px solid #F0F0F0; cursor: pointer;" onclick="showPage('main-page')">
+          <span style="font-size: 24px; margin-right: 16px;">🐾</span>
+          <span style="flex: 1; font-size: 16px;">宠物信息</span>
+          <span style="color: #B0BEC5;">›</span>
+        </div>
+        <div style="display: flex; padding: 16px; border-bottom: 1px solid #F0F0F0; cursor: pointer;">
+          <span style="font-size: 24px; margin-right: 16px;">📋</span>
+          <span style="flex: 1; font-size: 16px;">订单信息</span>
+          <span style="background: #1A3A52; color: #FFFFFF; font-size: 12px; padding: 4px 12px; border-radius: 12px;">3</span>
+          <span style="color: #B0BEC5;">›</span>
+        </div>
+        <div style="display: flex; padding: 16px; border-bottom: 1px solid #F0F0F0; cursor: pointer;" onclick="showPage('address-page')">
+          <span style="font-size: 24px; margin-right: 16px;">📍</span>
+          <span style="flex: 1; font-size: 16px;">地址管理</span>
+          <span style="color: #B0BEC5;">›</span>
+        </div>
+        <div style="display: flex; padding: 16px; cursor: pointer;">
+          <span style="font-size: 24px; margin-right: 16px;">🧾</span>
+          <span style="flex: 1; font-size: 16px;">开票</span>
+          <span style="color: #B0BEC5;">›</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-bar">
+      <div class="nav-item" onclick="showPage('main-page')"><div class="icon">🏠</div><div>首页</div></div>
+      <div class="nav-item active" onclick="showPage('mine-page')"><div class="icon">👤</div><div>我的</div></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    let state = { selectedPet: null, address: null, time: null, selectedDate: null, selectedTimeSlot: null };
+
+    const timeSlots = [
+      '08:00-09:00', '09:00-10:00', '10:00-11:00', '11:00-12:00',
+      '12:00-13:00', '13:00-14:00', '14:00-15:00', '15:00-16:00',
+      '16:00-17:00', '17:00-18:00', '18:00-19:00', '19:00-20:00',
+      '20:00-21:00'
+    ];
+
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
+    function updateBookButton() {
+      const btn = document.getElementById('book-button');
+      btn.classList[state.selectedPet && state.address && state.time ? 'remove' : 'add']('disabled');
+    }
+
+    function showPetSelector() {
+      document.getElementById('pet-modal').classList.add('active');
+    }
+
+    function closePetModal() {
+      document.getElementById('pet-modal').classList.remove('active');
+    }
+
+    function selectPet(id) {
+      state.selectedPet = { id };
+      const names = { 1: '旺财 · 狗狗', 2: '咪咪 · 猫咪' };
+      document.getElementById('pet-display').textContent = names[id];
+      document.getElementById('pet-display').classList.remove('placeholder');
+      closePetModal();
+      updateBookButton();
+    }
+
+    function showAddPet() {
+      showToast('添加宠物功能开发中');
+    }
+
+    function showTimeModal() {
+      initCalendar();
+      initTimeSlots();
+      document.getElementById('time-modal').classList.add('active');
+    }
+
+    function closeTimeModal() {
+      document.getElementById('time-modal').classList.remove('active');
+    }
+
+    function initCalendar() {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = today.getMonth();
+      document.getElementById('calendar-month').textContent = `${year}年${month + 1}月`;
+
+      const calendarDays = document.getElementById('calendar-days');
+      calendarDays.innerHTML = '';
+
+      const firstDay = new Date(year, month, 1).getDay();
+      for (let i = 0; i < firstDay; i++) {
+        const emptyDay = document.createElement('div');
+        emptyDay.className = 'calendar-day';
+        calendarDays.appendChild(emptyDay);
+      }
+
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      for (let day = 1; day <= daysInMonth; day++) {
+        const date = new Date(year, month, day);
+        const dayElement = document.createElement('div');
+        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        dayElement.className = 'calendar-day';
+        dayElement.dataset.date = dateStr;
+
+        if (day === today.getDate()) dayElement.classList.add('today');
+        if (state.selectedDate === dateStr) dayElement.classList.add('selected');
+        if (date < today && day !== today.getDate()) dayElement.classList.add('disabled');
+
+        dayElement.innerHTML = `<div>${day}</div><div class="calendar-day-status">${day === today.getDate() ? '今天' : date >= today ? '可预约' : '可查看'}</div>`;
+        if (date >= today || day === today.getDate()) {
+          dayElement.onclick = () => { state.selectedDate = dateStr; initCalendar(); updateTimeConfirmButton(); };
+        }
+        calendarDays.appendChild(dayElement);
+      }
+    }
+
+    function initTimeSlots() {
+      const timeSlotsContainer = document.getElementById('time-slots');
+      timeSlotsContainer.innerHTML = '';
+      timeSlots.forEach(slot => {
+        const slotElement = document.createElement('div');
+        slotElement.className = `time-slot${state.selectedTimeSlot === slot ? ' selected' : ''}`;
+        slotElement.textContent = slot;
+        slotElement.onclick = () => { state.selectedTimeSlot = slot; initTimeSlots(); updateTimeConfirmButton(); };
+        timeSlotsContainer.appendChild(slotElement);
+      });
+    }
+
+    function updateTimeConfirmButton() {
+      const btn = document.getElementById('time-confirm-btn');
+      btn.classList[state.selectedDate && state.selectedTimeSlot ? 'remove' : 'add']('disabled');
+    }
+
+    function confirmTime() {
+      if (!state.selectedDate || !state.selectedTimeSlot) {
+        showToast('请选择上门时间');
+        return;
+      }
+      state.time = { date: state.selectedDate, slot: state.selectedTimeSlot };
+      const date = new Date(state.selectedDate);
+      const weekDays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+      document.getElementById('time-display').textContent = `${date.getMonth() + 1}月${date.getDate()}日 ${weekDays[date.getDay()]} ${state.selectedTimeSlot}`;
+      document.getElementById('time-display').classList.remove('placeholder');
+      closeTimeModal();
+      updateBookButton();
+    }
+
+    function confirmAddress() {
+      state.address = true;
+      document.getElementById('address-display').textContent = '华熙国际中心D座';
+      document.getElementById('address-display').classList.remove('placeholder');
+      showPage('main-page');
+      updateBookButton();
+    }
+
+    function selectHistoryAddress(index) {
+      confirmAddress();
+    }
+
+    function selectService(index) {
+      showToast('已选择服务');
+    }
+
+    function handleBooking() {
+      if (!state.selectedPet) { showToast('请选择宠物'); return; }
+      if (!state.address) { showToast('请输入上门位置'); return; }
+      if (!state.time) { showToast('请选择上门时间'); return; }
+      showToast('预约成功！');
+    }
+
+    document.addEventListener('DOMContentLoaded', initCalendar);
+  </script>
+</body>
+</html>
