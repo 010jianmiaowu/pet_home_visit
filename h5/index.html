@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>萌宠日记</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div id="page-home" class="page active">
+            <div class="header">
+                <h1 class="title">首页</h1>
+                <div class="notification-btn">
+                    <span class="icon">🔔</span>
+                </div>
+            </div>
+            
+            <div class="tabs">
+                <div class="tab-item active" data-tab="follow">关注</div>
+                <div class="tab-item" data-tab="recommend">推荐</div>
+            </div>
+            
+            <div class="feed-list">
+                <div class="post-card" data-postid="1">
+                    <div class="post-header">
+                        <img class="avatar" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=cute%20fluffy%20white%20cat%20avatar%20portrait%20warm%20style&image_size=square" alt="avatar" />
+                        <div class="user-info">
+                            <span class="username">奶茶是只布偶猫</span>
+                            <span class="time">2小时前</span>
+                        </div>
+                        <div class="more-btn">
+                            <span class="icon">⋮</span>
+                        </div>
+                    </div>
+                    <p class="post-content">今天也要做一只快乐的小猫咪🐱
+晒晒我家奶茶的日常~阳光、零食、好心情！</p>
+                    <img class="post-image" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=fluffy%20white%20ragdoll%20cat%20sitting%20in%20sunlight%20warm%20cozy%20illustration%20style&image_size=portrait_4_3" alt="post" />
+                    <div class="post-tags">
+                        <span class="tag">#猫咪日常</span>
+                        <span class="tag">#布偶猫</span>
+                        <span class="tag">#萌宠出道计划</span>
+                    </div>
+                    <div class="post-actions">
+                        <div class="action-item" data-action="like">
+                            <span class="action-icon">🤍</span>
+                            <span class="action-text">128</span>
+                        </div>
+                        <div class="action-item" data-action="comment">
+                            <span class="action-icon">💬</span>
+                            <span class="action-text">32</span>
+                        </div>
+                        <div class="action-item" data-action="favorite">
+                            <span class="action-icon">☆</span>
+                            <span class="action-text">16</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="post-card" data-postid="2">
+                    <div class="post-header">
+                        <img class="avatar" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=cute%20shiba%20inu%20dog%20avatar%20portrait%20warm%20style&image_size=square" alt="avatar" />
+                        <div class="user-info">
+                            <span class="username">多多的成长日记</span>
+                            <span class="time">5小时前</span>
+                        </div>
+                        <div class="more-btn">
+                            <span class="icon">⋮</span>
+                        </div>
+                    </div>
+                    <p class="post-content">和多多的周末时光
+一起去公园玩耍，奔跑，撒欢，太开心啦！</p>
+                    <img class="post-image" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=happy%20shiba%20inu%20dog%20playing%20in%20park%20warm%20illustration%20style&image_size=portrait_4_3" alt="post" />
+                    <div class="post-tags">
+                        <span class="tag">#狗狗日常</span>
+                        <span class="tag">#柴犬</span>
+                        <span class="tag">#周末快乐</span>
+                    </div>
+                    <div class="post-actions">
+                        <div class="action-item" data-action="like">
+                            <span class="action-icon">🤍</span>
+                            <span class="action-text">96</span>
+                        </div>
+                        <div class="action-item" data-action="comment">
+                            <span class="action-icon">💬</span>
+                            <span class="action-text">28</span>
+                        </div>
+                        <div class="action-item" data-action="favorite">
+                            <span class="action-icon">☆</span>
+                            <span class="action-text">12</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="post-card" data-postid="3">
+                    <div class="post-header">
+                        <img class="avatar" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=cute%20orange%20tabby%20cat%20avatar%20portrait%20warm%20style&image_size=square" alt="avatar" />
+                        <div class="user-info">
+                            <span class="username">小橘的铲屎官</span>
+                            <span class="time">昨天</span>
+                        </div>
+                        <div class="more-btn">
+                            <span class="icon">⋮</span>
+                        </div>
+                    </div>
+                    <p class="post-content">小橘今天又闯祸了😼
+把我的花盆打碎了，但看到它萌萌的眼神又不忍心骂它~</p>
+                    <img class="post-image" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=cute%20orange%20tabby%20cat%20with%20broken%20flower%20pot%20guilty%20expression%20warm%20illustration&image_size=portrait_4_3" alt="post" />
+                    <div class="post-tags">
+                        <span class="tag">#橘猫</span>
+                        <span class="tag">#调皮鬼</span>
+                        <span class="tag">#猫咪日常</span>
+                    </div>
+                    <div class="post-actions">
+                        <div class="action-item" data-action="like">
+                            <span class="action-icon">🤍</span>
+                            <span class="action-text">156</span>
+                        </div>
+                        <div class="action-item" data-action="comment">
+                            <span class="action-icon">💬</span>
+                            <span class="action-text">45</span>
+                        </div>
+                        <div class="action-item" data-action="favorite">
+                            <span class="action-icon">☆</span>
+                            <span class="action-text">23</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-detail" class="page">
+            <div class="header">
+                <div class="back-btn" data-page="home">
+                    <span>‹</span>
+                </div>
+                <h1 class="title">详情</h1>
+                <div class="placeholder"></div>
+            </div>
+            
+            <div class="post-detail">
+                <div class="post-header">
+                    <img class="avatar" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=cute%20fluffy%20white%20cat%20avatar%20portrait%20warm%20style&image_size=square" alt="avatar" />
+                    <div class="user-info">
+                        <span class="username">奶茶是只布偶猫</span>
+                        <span class="time">2小时前</span>
+                    </div>
+                    <div class="follow-btn">关注</div>
+                </div>
+                <p class="post-content">今天天气超好，奶茶在阳台晒太阳☀
+毛茸茸的样子真的太治愈了~
+谁能拒绝一只可可爱爱的小猫咪呢！</p>
+                <img class="post-image" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=fluffy%20white%20ragdoll%20cat%20sitting%20in%20sunlight%20warm%20cozy%20illustration%20style&image_size=portrait_4_3" alt="post" />
+                <div class="post-tags">
+                    <span class="tag">#猫咪日常</span>
+                    <span class="tag">#布偶猫</span>
+                    <span class="tag">#萌宠出道计划</span>
+                </div>
+                <div class="post-actions">
+                    <div class="action-item" data-action="like">
+                        <span class="action-icon">🤍</span>
+                        <span class="action-text">128</span>
+                    </div>
+                    <div class="action-item" data-action="comment">
+                        <span class="action-icon">💬</span>
+                        <span class="action-text">32</span>
+                    </div>
+                    <div class="action-item" data-action="favorite">
+                        <span class="action-icon">☆</span>
+                        <span class="action-text">16</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comments-section">
+                <div class="section-header">
+                    <span class="section-title">共 3 条评论</span>
+                </div>
+                <div class="comment-item">
+                    <img class="comment-avatar" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=cute%20bear%20avatar%20portrait%20warm%20style&image_size=square" alt="avatar" />
+                    <div class="comment-content">
+                        <div class="comment-header">
+                            <span class="comment-username">小熊软糖</span>
+                            <span class="comment-time">2小时前</span>
+                        </div>
+                        <p class="comment-text">好可爱呀！奶茶的眼睛好漂亮~</p>
+                        <div class="comment-action">
+                            <span class="comment-like">🤍 5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment-item">
+                    <img class="comment-avatar" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=cute%20cat%20face%20avatar%20portrait%20warm%20style&image_size=square" alt="avatar" />
+                    <div class="comment-content">
+                        <div class="comment-header">
+                            <span class="comment-username">喵星人爱好者</span>
+                            <span class="comment-time">1小时前</span>
+                        </div>
+                        <p class="comment-text">我家也有一只布偶，简直一模一样！</p>
+                        <div class="comment-action">
+                            <span class="comment-like">🤍 3</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment-item">
+                    <img class="comment-avatar" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=cute%20paw%20print%20avatar%20warm%20style&image_size=square" alt="avatar" />
+                    <div class="comment-content">
+                        <div class="comment-header">
+                            <span class="comment-username">宠物达人</span>
+                            <span class="comment-time">30分钟前</span>
+                        </div>
+                        <p class="comment-text">阳光下的奶茶也太治愈了吧~</p>
+                        <div class="comment-action">
+                            <span class="comment-like">🤍 2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comment-input-bar">
+                <input class="comment-input" placeholder="说点什么..." />
+                <div class="send-btn">发送</div>
+            </div>
+        </div>
+
+        <div id="page-publish" class="page">
+            <div class="header">
+                <div class="back-btn" data-page="home">
+                    <span>取消</span>
+                </div>
+                <h1 class="title">发布</h1>
+                <div class="next-btn">下一步</div>
+            </div>
+            
+            <div class="content">
+                <div class="upload-area">
+                    <div class="upload-icon">
+                        <span class="plus">+</span>
+                    </div>
+                    <span class="upload-text">添加照片/视频</span>
+                    <span class="upload-hint">（最多9张）</span>
+                </div>
+                
+                <div class="input-area">
+                    <textarea class="content-input" placeholder="分享一下你家宝贝的日常吧~" maxlength="1000"></textarea>
+                    <span class="char-count">0/1000</span>
+                </div>
+                
+                <div class="tags-area">
+                    <div class="tag-item">
+                        <span class="tag-icon">#</span>
+                        <span class="tag-text">话题</span>
+                    </div>
+                    <div class="tag-item">
+                        <span class="tag-icon">@</span>
+                        <span class="tag-text">好友</span>
+                    </div>
+                    <div class="tag-item">
+                        <span class="tag-icon">📍</span>
+                        <span class="tag-text">位置</span>
+                    </div>
+                </div>
+                
+                <div class="settings-area">
+                    <div class="setting-item">
+                        <span class="setting-label">谁可以看</span>
+                        <span class="setting-value">公开</span>
+                        <span class="arrow">›</span>
+                    </div>
+                    <div class="setting-item">
+                        <span class="setting-label">允许评论</span>
+                        <label class="switch">
+                            <input type="checkbox" checked />
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <span class="setting-label">同步到朋友圈</span>
+                        <label class="switch">
+                            <input type="checkbox" />
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-profile" class="page">
+            <div class="header">
+                <div class="back-btn" data-page="home">
+                    <span>‹</span>
+                </div>
+                <h1 class="title">个人资料</h1>
+                <div class="placeholder"></div>
+            </div>
+            
+            <div class="profile-header">
+                <img class="profile-avatar" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=cute%20fluffy%20white%20cat%20avatar%20portrait%20warm%20style&image_size=square" alt="avatar" />
+                <h2 class="profile-username">奶茶麻麻</h2>
+                <p class="profile-bio">养猫生活记录者
+分享奶茶的日常点滴~
+期待和更多宠友成为朋友！</p>
+            </div>
+            
+            <div class="stats-row">
+                <div class="stat-item">
+                    <span class="stat-value">10</span>
+                    <span class="stat-label">关注</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">28</span>
+                    <span class="stat-label">粉丝</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">28</span>
+                    <span class="stat-label">作品</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">56</span>
+                    <span class="stat-label">收藏</span>
+                </div>
+            </div>
+            
+            <div class="profile-actions">
+                <div class="action-btn primary">编辑资料</div>
+                <div class="action-btn">设置</div>
+            </div>
+            
+            <div class="posts-section">
+                <div class="section-header">
+                    <span class="section-title">我的动态</span>
+                </div>
+                <div class="posts-grid">
+                    <img class="post-thumb" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=fluffy%20white%20ragdoll%20cat%20sitting%20in%20sunlight%20warm%20cozy%20illustration%20style&image_size=portrait_4_3" alt="post" />
+                    <img class="post-thumb" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=happy%20shiba%20inu%20dog%20playing%20in%20park%20warm%20illustration%20style&image_size=portrait_4_3" alt="post" />
+                    <img class="post-thumb" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=cute%20orange%20tabby%20cat%20with%20broken%20flower%20pot%20guilty%20expression%20warm%20illustration&image_size=portrait_4_3" alt="post" />
+                    <img class="post-thumb" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=cute%20fluffy%20hamster%20eating%20sunflower%20seeds%20warm%20illustration%20style&image_size=portrait_4_3" alt="post" />
+                    <img class="post-thumb" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=fluffy%20white%20ragdoll%20cat%20portrait%20warm%20style&image_size=square" alt="post" />
+                    <img class="post-thumb" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=happy%20shiba%20inu%20dog%20portrait%20warm%20style&image_size=square" alt="post" />
+                </div>
+            </div>
+        </div>
+
+        <div id="page-mine" class="page">
+            <div class="header">
+                <h1 class="title">我的</h1>
+                <div class="notification-btn">
+                    <span class="icon">🔔</span>
+                </div>
+            </div>
+            
+            <div class="profile-section">
+                <div class="profile-card" data-page="profile">
+                    <img class="avatar" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=cute%20fluffy%20white%20cat%20avatar%20portrait%20warm%20style&image_size=square" alt="avatar" />
+                    <div class="profile-info">
+                        <span class="username">奶茶麻麻</span>
+                        <span class="id">ID: 12345678</span>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </div>
+            
+            <div class="pets-section">
+                <div class="section-header">
+                    <span class="section-title">我的宠物档案</span>
+                </div>
+                <div class="pet-card">
+                    <img class="pet-avatar" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=fluffy%20white%20ragdoll%20cat%20portrait%20warm%20style&image_size=square" alt="pet" />
+                    <div class="pet-info">
+                        <div class="pet-name-row">
+                            <span class="pet-name">奶茶</span>
+                            <span class="pet-gender">母</span>
+                        </div>
+                        <span class="pet-type">布偶猫 | 2岁3个月</span>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+                <div class="pet-card">
+                    <img class="pet-avatar" src="https://neeko-copilot.bytedance.net/api/text_to_image?prompt=happy%20shiba%20inu%20dog%20portrait%20warm%20style&image_size=square" alt="pet" />
+                    <div class="pet-info">
+                        <div class="pet-name-row">
+                            <span class="pet-name">多多</span>
+                            <span class="pet-gender">公</span>
+                        </div>
+                        <span class="pet-type">柴犬 | 1岁8个月</span>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+                <div class="add-pet-btn">
+                    <span class="add-icon">+</span>
+                    <span class="add-text">添加宠物</span>
+                </div>
+            </div>
+            
+            <div class="menu-section">
+                <div class="menu-item">
+                    <span class="menu-icon">⚙️</span>
+                    <span class="menu-text">设置</span>
+                    <span class="arrow">›</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-icon">💬</span>
+                    <span class="menu-text">意见反馈</span>
+                    <span class="arrow">›</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-icon">❓</span>
+                    <span class="menu-text">帮助与客服</span>
+                    <span class="arrow">›</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-icon">ℹ️</span>
+                    <span class="menu-text">关于我们</span>
+                    <span class="arrow">›</span>
+                </div>
+            </div>
+            
+            <div class="version-info">
+                <span class="version-text">萌宠日记 v1.0.0</span>
+            </div>
+        </div>
+
+        <div class="tab-bar">
+            <div class="tab-item active" data-page="home">
+                <span class="tab-icon">🏠</span>
+                <span class="tab-text">首页</span>
+            </div>
+            <div class="tab-item publish" data-page="publish">
+                <span class="tab-icon">+</span>
+                <span class="tab-text">发布</span>
+            </div>
+            <div class="tab-item" data-page="mine">
+                <span class="tab-icon">👤</span>
+                <span class="tab-text">我的</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
