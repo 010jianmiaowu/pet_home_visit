@@ -1,0 +1,71 @@
+<view class="container">
+  <view class="post-detail">
+    <view class="post-header">
+      <image class="avatar" src="{{post.avatar}}" mode="aspectFill" />
+      <view class="user-info">
+        <text class="username">{{post.username}}</text>
+        <text class="time">{{post.createdAt}}</text>
+      </view>
+      <view class="follow-btn" bindtap="handleFollow">
+        <text>{{isFollowing ? '已关注' : '关注'}}</text>
+      </view>
+    </view>
+    
+    <text class="post-content">{{post.detailContent}}</text>
+    
+    <image class="post-image" src="{{post.image}}" mode="widthFix" />
+    
+    <view class="post-tags">
+      <text wx:for="{{post.tags}}" wx:key="*this" class="tag">{{item}}</text>
+    </view>
+    
+    <view class="post-actions">
+      <view class="action-item" bindtap="handleLike">
+        <text class="action-icon">{{isLiked ? '❤️' : '🤍'}}</text>
+        <text class="action-text">{{post.likes}}</text>
+      </view>
+      <view class="action-item">
+        <text class="action-icon">💬</text>
+        <text class="action-text">{{post.comments}}</text>
+      </view>
+      <view class="action-item" bindtap="handleFavorite">
+        <text class="action-icon">{{isFavorited ? '⭐' : '☆'}}</text>
+        <text class="action-text">{{post.favorites}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="comments-section">
+    <view class="section-header">
+      <text class="section-title">共 {{comments.length}} 条评论</text>
+    </view>
+    
+    <view wx:for="{{comments}}" wx:key="id" class="comment-item">
+      <image class="comment-avatar" src="{{item.avatar}}" mode="aspectFill" />
+      <view class="comment-content">
+        <view class="comment-header">
+          <text class="comment-username">{{item.username}}</text>
+          <text class="comment-time">{{item.createdAt}}</text>
+        </view>
+        <text class="comment-text">{{item.content}}</text>
+        <view class="comment-action">
+          <text class="comment-like" bindtap="handleCommentLike" data-commentid="{{item.id}}">
+            {{item.isLiked ? '❤️' : '🤍'}} {{item.likes}}
+          </text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="comment-input-bar">
+    <input 
+      class="comment-input" 
+      placeholder="说点什么..." 
+      value="{{commentInput}}"
+      bindinput="onCommentInput"
+    />
+    <view class="send-btn" bindtap="sendComment">
+      <text>发送</text>
+    </view>
+  </view>
+</view>

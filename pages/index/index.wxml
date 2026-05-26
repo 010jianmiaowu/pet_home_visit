@@ -1,0 +1,69 @@
+<view class="container">
+  <view class="header">
+    <text class="title">首页</text>
+    <view class="notification-btn">
+      <text class="icon">🔔</text>
+    </view>
+  </view>
+  
+  <view class="tabs">
+    <view 
+      class="tab-item {{currentTab === 'follow' ? 'active' : ''}}" 
+      bindtap="switchTab" 
+      data-tab="follow"
+    >
+      关注
+    </view>
+    <view 
+      class="tab-item {{currentTab === 'recommend' ? 'active' : ''}}" 
+      bindtap="switchTab" 
+      data-tab="recommend"
+    >
+      推荐
+    </view>
+  </view>
+  
+  <scroll-view class="feed-list" scroll-y>
+    <view 
+      wx:for="{{posts}}" 
+      wx:key="id" 
+      class="post-card"
+      bindtap="goToDetail"
+      data-postid="{{item.id}}"
+    >
+      <view class="post-header">
+        <image class="avatar" src="{{item.avatar}}" mode="aspectFill" />
+        <view class="user-info">
+          <text class="username">{{item.username}}</text>
+          <text class="time">{{item.createdAt}}</text>
+        </view>
+        <view class="more-btn">
+          <text class="icon">⋮</text>
+        </view>
+      </view>
+      
+      <text class="post-content">{{item.content}}</text>
+      
+      <image class="post-image" src="{{item.image}}" mode="widthFix" />
+      
+      <view class="post-tags">
+        <text wx:for="{{item.tags}}" wx:key="*this" class="tag">{{item}}</text>
+      </view>
+      
+      <view class="post-actions">
+        <view class="action-item" bindtap="handleLike" data-postid="{{item.id}}">
+          <text class="action-icon">{{item.isLiked ? '❤️' : '🤍'}}</text>
+          <text class="action-text">{{item.likes}}</text>
+        </view>
+        <view class="action-item" bindtap="goToDetail" data-postid="{{item.id}}">
+          <text class="action-icon">💬</text>
+          <text class="action-text">{{item.comments}}</text>
+        </view>
+        <view class="action-item" bindtap="handleFavorite" data-postid="{{item.id}}">
+          <text class="action-icon">{{item.isFavorited ? '⭐' : '☆'}}</text>
+          <text class="action-text">{{item.favorites}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

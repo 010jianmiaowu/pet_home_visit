@@ -1,0 +1,63 @@
+<view class="container">
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <text>取消</text>
+    </view>
+    <text class="title">发布</text>
+    <view class="next-btn" bindtap="goNext">
+      <text>下一步</text>
+    </view>
+  </view>
+  
+  <view class="content">
+    <view class="upload-area" bindtap="chooseImage">
+      <view class="upload-icon">
+        <text class="plus">+</text>
+      </view>
+      <text class="upload-text">添加照片/视频</text>
+      <text class="upload-hint">（最多9张）</text>
+    </view>
+    
+    <view class="input-area">
+      <textarea 
+        class="content-input" 
+        placeholder="分享一下你家宝贝的日常吧~" 
+        value="{{content}}"
+        bindinput="onContentInput"
+        maxlength="1000"
+      />
+      <text class="char-count">{{content.length}}/1000</text>
+    </view>
+    
+    <view class="tags-area">
+      <view class="tag-item">
+        <text class="tag-icon">#</text>
+        <text class="tag-text">话题</text>
+      </view>
+      <view class="tag-item">
+        <text class="tag-icon">@</text>
+        <text class="tag-text">好友</text>
+      </view>
+      <view class="tag-item">
+        <text class="tag-icon">📍</text>
+        <text class="tag-text">位置</text>
+      </view>
+    </view>
+    
+    <view class="settings-area">
+      <view class="setting-item">
+        <text class="setting-label">谁可以看</text>
+        <text class="setting-value">公开</text>
+        <text class="arrow">›</text>
+      </view>
+      <view class="setting-item">
+        <text class="setting-label">允许评论</text>
+        <switch class="setting-switch" checked="{{allowComment}}" bindchange="onAllowCommentChange" />
+      </view>
+      <view class="setting-item">
+        <text class="setting-label">同步到朋友圈</text>
+        <switch class="setting-switch" checked="{{syncFriendCircle}}" bindchange="onSyncFriendCircleChange" />
+      </view>
+    </view>
+  </view>
+</view>
